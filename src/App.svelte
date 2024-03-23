@@ -13,6 +13,7 @@
   let balance;
   let bankBalance;
 
+  let nbr_tx = 0;
   let depositAmount = 1;
   let depositButtonActive = false;
   let depositButtonLabel = "Buy";
@@ -154,7 +155,7 @@
     </section>
     <section id="section2" class="full-screen-section">
       <h1>Section 2: Checker</h1>
-      <TransactionChecker />  
+      <TransactionChecker {nbr_tx}/>
       <div class="card">
         {#if wallet}
           <p>L'adresse du wallet connecté est {address}.</p>
