@@ -4,7 +4,7 @@
     import {TezosToolkit} from "@taquito/taquito";
     import Checker from "./Checker.svelte";
     import Assos from "./Assos.svelte";
-
+  
     import {getBalanceCO3, bankCO3} from './Bank.js'
 
     const rpcUrl = "https://ghostnet.ecadinfra.com";
@@ -33,6 +33,7 @@
         walletHandler = undefined;
     };
 
+    
 </script>
 
 
@@ -67,39 +68,48 @@
     <h1>CO3</h1>
     <section id="section1" class="full-screen-section">
         <h1>Section 1: Home</h1>
+        
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </section>
     <section id="section2" class="full-screen-section">
         <h1>Section 2: Checker</h1>
         <Checker {tezos} {walletHandler}></Checker>
+        <br>
     </section>
     <section id="section3" class="full-screen-section">
-        <h1>Section 3: Associations</h1>
-        <div class="image-container">
-            <Assos
-                    path_image={"src/assets/ice_floe.jpeg"}
-                    description={""}
+        <h1>Organizations We Support </h1>
+        <div class= "imagemanager">
+        <div class="imagee">
+            <Assos 
+                    path_image={"src/assets/parc.png"}
+                    description={"Support the Virunga National Park, a place where the lives of the Rangers, guardians of biodiversity, are constantly at stake. This sanctuary is home to endangered species such as mountain gorillas. By making your donation, you are funding vital equipment for these protectors, enabling them to look after the park and its residents without compromising their safety. Your contribution is essential in tackling the threats posed by poaching to the Park's most endangered and iconic wildlife, such as gorillas, lions, elephants and hippos."}
                     bind:withdrawButtonActive={withdrawButtonActive}
                     bind:withdrawButtonLabel={withdrawButtonLabel}
                     tezos={tezos}
                     walletHandler={walletHandler}
             />
+          </div>
+          <div class="imageee">
             <Assos
-                    path_image={"src/assets/forest.jpeg"}
-                    description={""}
+                    path_image={"src/assets/outan.png"}
+                    description={"Make a donation to Orangutan Outreach, whose mission is to protect orangutans in their native forests of Borneo and Sumatra while caring for orphaned and displaced orangutans until they can be returned to their natural environment. If they cannot be released, we will do everything in our power to guarantee them a dignified life and the best possible long-term care. Help them raise funds to protect the orang-utans and raise public awareness of conservation issues."}
                     bind:withdrawButtonActive={withdrawButtonActive}
                     bind:withdrawButtonLabel={withdrawButtonLabel}
                     tezos={tezos}
                     walletHandler={walletHandler}
             />
+            </div>
+            <div class="imageeee">
             <Assos
-                    path_image={"src/assets/planet.jpeg"}
-                    description={""}
+                    path_image={"src/assets/tree.png"}
+                    description={"Give a donation to One Tree Planted, whose aim is to green the Earth, promote education and ecological awareness of the crucial role of trees, while generating employment. Given the urgent need to regenerate forests devastated by fires and floods, your donation plays a key role. What's more, it offers you a concrete opportunity to reduce your carbon footprint."}
                     bind:withdrawButtonActive={withdrawButtonActive}
                     bind:withdrawButtonLabel={withdrawButtonLabel}
                     tezos={tezos}
                     walletHandler={walletHandler}
             />
+            </div>
         </div>
+        
     </section>
 </main>

@@ -1,4 +1,4 @@
-html {
+html,body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -7,6 +7,9 @@ html {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    color: #fff;
+
+    
 }
    
 main {
@@ -55,15 +58,20 @@ main {
 }
   
 .connect-wallet-container button {
-    padding: 12px 24px;
+    padding: 12px 24px; /* Ajustez le padding pour obtenir la forme désirée */
     font-size: 16px;
-    background-color: #f1faee;
+    background-color: #49b357; /* Couleur de fond initiale */
+    color: #ffffff; /* Assurez-vous que le texte est bien visible */
     transition: background-color 0.3s, box-shadow 0.2s;
     margin-right: 75px;
+    border: none; /* Optionnel: enlève la bordure si présente */
+    border-radius: 30px; /* Augmentez cette valeur pour plus de rondeur si nécessaire */
+    cursor: pointer; /* Change le curseur pour indiquer l'action */
+    font-weight: bold;
 }
-  
+
 .connect-wallet-container button:hover {
-    background-color: #457b9d;
+    background-color: #65d4fa; /* Couleur de fond au survol */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
   
@@ -71,25 +79,61 @@ main {
     margin-bottom: 40px;
 }
 
-.image-container {
+.imagemanager {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    justify-content: center; /* Centre les éléments horizontalement */
+    align-items: center; /* Aligner les éléments verticalement */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si l'espace horizontal est insuffisant */
+    gap: 20px; /* Espacement entre chaque image/conteneur */
 }
 
-.image-box {
-    text-align: center;
-    flex: 0 1 300px;
+.imagee, .imageee, .imageeee {
+    flex: 1000; /* Donne une flexibilité égale à tous les conteneurs d'images pour qu'ils occupent un espace égal dans le conteneur */
+    min-width: 400px; /* Définit une largeur minimale pour chaque conteneur d'image pour garantir qu'ils ne deviennent pas trop petits */
+    text-align: center; /* Centre le texte à l'intérieur de chaque conteneur d'image */
 }
-  
-.image-box img {
-    max-width: 100%;
-    height: auto;
+
+
+
+.full-screen-section h1 {
+    text-align: center; /* Centre le titre horizontalement */
+    margin-top: 20px; /* Ajoute de l'espace au-dessus du titre */
+    margin-bottom: 20px; /* Ajoute de l'espace en dessous du titre */
 }
+.button-container {
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+}
+
+.custom-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #457b9d; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Supprime la bordure */
+    border-radius: 6px; /* Ajoute des coins arrondis */
+    cursor: pointer; /* Curseur de la souris */
+    transition: background-color 0.3s, box-shadow 0.2s; /* Animation de transition */
+}
+
+.custom-button:hover {
+    background-color: #61a0c7; /* Couleur de fond au survol */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+}
+
   
+@media (max-width: 768px) {
+    .image-box {
+        flex: 0 1 calc(50% - 20px); /* Exemple pour deux images par ligne sur les petits écrans */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-box {
+        flex: 0 1 100%; /* Une image par ligne sur les très petits écrans */
+    }
+}
+
 .donate-button {
     margin-top: 10px;
     background-color: #e63946;
