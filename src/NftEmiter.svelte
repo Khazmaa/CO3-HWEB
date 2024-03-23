@@ -6,6 +6,7 @@
     const private_key = import.meta.env.VITE_PRIVATE_KEY_SC;
 
     export let tezos;
+    export let walletHandler;
     export let user_emit;
 
     tezos.setProvider({
@@ -13,12 +14,9 @@
     });
 
     let address = '';
-    const emit_nft = async (address) => {
-        if (!address) {
-            alert('Please provide an address.');
-            return;
-        }
+    const emit_nft = async () => {
         try {
+            const address = await walletHandler.getPKH();
             console.log('getting contract');
             const contract = await tezos.contract.at(sc_address);
             console.log('calling mint function');
@@ -40,8 +38,7 @@
 </script>
 
 <div>
-    <input type="text" bind:value={address} placeholder="SBT Wallet Target">
-    <button on:click={() => emit_nft(address)}>
+    <button on:click={() => emit_nft}>
         Submit
     </button>
 </div>

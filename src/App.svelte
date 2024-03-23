@@ -3,8 +3,9 @@
     import {NetworkType} from "@airgap/beacon-types";
     import {TezosToolkit} from "@taquito/taquito";
     import Checker from "./Checker.svelte";
+    import Assos from "./Assos.svelte";
 
-    import {getBalanceCO3, withdraw, bankCO3} from './Bank.js'
+    import {getBalanceCO3, bankCO3} from './Bank.js'
 
     const rpcUrl = "https://ghostnet.ecadinfra.com";
     const tezos = new TezosToolkit(rpcUrl);
@@ -72,9 +73,9 @@
         <h1>Section 2: Checker</h1>
         <Checker {tezos} {walletHandler}></Checker>
     </section>
-
     <section id="section3" class="full-screen-section">
         <h1>Section 3: Associations</h1>
+<<<<<<< HEAD
         <div class="wrapper">
             <div class="image">
                 <img src="src/assets/outan.png" alt="Description image 1">
@@ -102,6 +103,33 @@
                     {withdrawButtonLabel}
                 </button>
             </div>
+=======
+        <div class="image-container">
+            <Assos
+                    path_image={"src/assets/ice_floe.jpeg"}
+                    description={""}
+                    bind:withdrawButtonActive={withdrawButtonActive}
+                    bind:withdrawButtonLabel={withdrawButtonLabel}
+                    tezos={tezos}
+                    walletHandler={walletHandler}
+            />
+            <Assos
+                    path_image={"src/assets/forest.jpeg"}
+                    description={""}
+                    bind:withdrawButtonActive={withdrawButtonActive}
+                    bind:withdrawButtonLabel={withdrawButtonLabel}
+                    tezos={tezos}
+                    walletHandler={walletHandler}
+            />
+            <Assos
+                    path_image={"src/assets/planet.jpeg"}
+                    description={""}
+                    bind:withdrawButtonActive={withdrawButtonActive}
+                    bind:withdrawButtonLabel={withdrawButtonLabel}
+                    tezos={tezos}
+                    walletHandler={walletHandler}
+            />
+>>>>>>> 614ca6321d1cdc923c0c352ca093668f72b7b9cf
         </div>
     </section>
 </main>

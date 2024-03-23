@@ -5,10 +5,14 @@ const contractAddress = import.meta.env.VITE_SC_BANK_ADDRESS;
 export let bankCO3 = writable(0);
 
 export const getBalanceCO3 = async (tezos, walletAddress) => {
-    const contract = await tezos.wallet.at(contractAddress);
-    const storage = await contract.storage();
-    const balanceMutez = await storage.get(walletAddress);
-    bankCO3.set(isNaN(balanceMutez) ? 0 : balanceMutez / 1000000);
+    try {
+        const contract = await tezos.wallet.at(contractAddress);
+        const storage = await contract.storage();
+        const balanceMutez = await storage.get(walletAddress);
+        bankCO3.set(isNaN(balanceMutez) ? 0 : balanceMutez / 1000000);
+    } catch (e) {
+        console.error("error when trying to load CO3 account: ", e.error);
+    }
 };
 
 const transfer = async (tezos, transacParams, walletAddress) => {
@@ -46,6 +50,6 @@ export const withdraw = async (tezos, walletHandler) => {
     const transacParams = await contract.methods
         .withdraw()
         .toTransferParams();
-    const estimate = await tezos.estimate.transfer(transacParams);
+    await tezos.estimate.transfer(transacParams);
     await transfer(tezos, transacParams, walletAddress)
 };

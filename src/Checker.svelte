@@ -11,28 +11,24 @@
     let user_emit = false;
     export let walletHandler;
     export let tezos;
-
-    console.log("user_check = ", user_check);
-    console.log("user_buy = ", user_buy);
-    console.log("user_emit = ", user_emit);
 </script>
 
 <div>
-    {#if !user_check && !user_buy && !user_emit}
-        <TransactionChecker bind:nbr_tx={nbr_tx} bind:co2_emit={co2_emit} bind:user_check={user_check}/>
-    {/if}
-    {#if user_check && !user_buy && !user_emit}
-        {#if walletHandler}
+    {#if walletHandler}
+        {#if !user_check && !user_buy && !user_emit}
+            <TransactionChecker bind:nbr_tx={nbr_tx} bind:co2_emit={co2_emit} bind:user_check={user_check} walletHandler={walletHandler}/>
+        {/if}
+        {#if user_check && !user_buy && !user_emit}
             <BuyPoint bind:user_buy={user_buy} {co2_emit} {walletHandler} {tezos}/>
         {/if}
-        {#if !walletHandler}
-            <p>Please connect your wallet !</p>
+        {#if (user_check && user_buy && !user_emit)}
+            <NftEmiter bind:user_emit={user_emit} {tezos} wallet_handler={walletHandler}/>
+        {/if}
+        {#if user_check && user_buy && user_emit}
+            <p>Congrats for your dedication and your support!</p>
         {/if}
     {/if}
-    {#if (user_check && user_buy && !user_emit)}
-        <NftEmiter bind:user_emit={user_emit} {tezos}/>
-    {/if}
-    {#if user_check && user_buy && user_emit}
-        <p>Congrats for your dedication and your support!</p>
+    {#if !walletHandler}
+        <p>Please connect your wallet !</p>
     {/if}
 </div>
