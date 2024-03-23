@@ -11,10 +11,6 @@
     let user_emit = false;
     export let walletHandler;
     export let tezos;
-
-    console.log("user_check = ", user_check);
-    console.log("user_buy = ", user_buy);
-    console.log("user_emit = ", user_emit);
 </script>
 
 <div>

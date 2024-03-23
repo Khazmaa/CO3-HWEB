@@ -3,6 +3,7 @@
     import {NetworkType} from "@airgap/beacon-types";
     import {TezosToolkit} from "@taquito/taquito";
     import Checker from "./Checker.svelte";
+    import Assos from "./Assos.svelte";
 
     import {getBalanceCO3, withdraw, bankCO3} from './Bank.js'
 
@@ -72,37 +73,33 @@
         <h1>Section 2: Checker</h1>
         <Checker {tezos} {walletHandler}></Checker>
     </section>
-
     <section id="section3" class="full-screen-section">
         <h1>Section 3: Associations</h1>
         <div class="image-container">
-            <div class="image-box">
-                <img src="src/assets/banquise.jpeg" alt="Description image 1">
-                <p>Description image 1</p>
-                <input type="text" placeholder="Votre texte ici">
-                <button on:click={withdraw} disabled={!withdrawButtonActive}>
-                    {withdrawButtonLabel}
-                </button>
-            </div>
-            <div class="image-box">
-                <img src="src/assets/foret.jpeg" alt="Description image 2">
-                <p>Description image 2</p>
-                <input type="text" placeholder="Votre texte ici">
-                <button on:click={withdraw} disabled={!withdrawButtonActive}>
-                    {withdrawButtonLabel}
-                </button>
-            </div>
-            <div class="image-box">
-                <img src="src/assets/planet.jpeg" alt="Description image 3">
-                <p>Description image 3</p>
-                <input type="text" placeholder="Votre texte ici">
-
-                <button on:click={() => {
-                    withdraw(tezos, walletHandler)
-                }} disabled={!withdrawButtonActive}>
-                    {withdrawButtonLabel}
-                </button>
-            </div>
+            <Assos
+                    path_image={"src/assets/ice_floe.jpeg"}
+                    description={""}
+                    bind:withdrawButtonActive={withdrawButtonActive}
+                    bind:withdrawButtonLabel={withdrawButtonLabel}
+                    tezos={tezos}
+                    walletHandler={walletHandler}
+            />
+            <Assos
+                    path_image={"src/assets/forest.jpeg"}
+                    description={""}
+                    bind:withdrawButtonActive={withdrawButtonActive}
+                    bind:withdrawButtonLabel={withdrawButtonLabel}
+                    tezos={tezos}
+                    walletHandler={walletHandler}
+            />
+            <Assos
+                    path_image={"src/assets/planet.jpeg"}
+                    description={""}
+                    bind:withdrawButtonActive={withdrawButtonActive}
+                    bind:withdrawButtonLabel={withdrawButtonLabel}
+                    tezos={tezos}
+                    walletHandler={walletHandler}
+            />
         </div>
     </section>
 </main>
