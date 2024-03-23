@@ -5,7 +5,7 @@
     import Checker from "./Checker.svelte";
     import Assos from "./Assos.svelte";
 
-    import {getBalanceCO3, withdraw, bankCO3} from './Bank.js'
+    import {getBalanceCO3, bankCO3} from './Bank.js'
 
     const rpcUrl = "https://ghostnet.ecadinfra.com";
     const tezos = new TezosToolkit(rpcUrl);
