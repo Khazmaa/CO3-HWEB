@@ -15,10 +15,9 @@
 
   let depositAmount = 1;
   let depositButtonActive = false;
-  let depositButtonLabel = "Deposit";
+  let depositButtonLabel = "Buy";
 
-  let withdrawButtonActive = true;
-  let withdrawButtonLabel = "Withdraw";
+
 
   const connectWallet = async () => {
     const newWallet = new BeaconWallet({
@@ -54,7 +53,7 @@
 
   const deposit = async () => {
     depositButtonActive = false;
-    depositButtonLabel = "Depositing...";
+    depositButtonLabel = "Buying...";
 
     Tezos.setWalletProvider(wallet);
     const contract = await Tezos.wallet.at(contractAddress);
@@ -83,7 +82,7 @@
     await getWalletBalance(address);
     await getBankBalance(address);
     depositButtonActive = true;
-    depositButtonLabel = "Deposit";
+    depositButtonLabel = "Buy";
   };
 
   const withdraw = async () => {
@@ -131,14 +130,20 @@
     <a href="#section2" class="nav-link">Checker</a>
     <a href="#section3" class="nav-link">Associations</a>
   </nav>
-  <div class="connect-wallet-container">
+  <div class="wallet-and-balance-container">
     {#if wallet}
-      <button on:click={disconnectWallet}>Disconnect Wallet</button>
-    {:else}
-      <button on:click={connectWallet}>Connect Wallet</button>
+      <span class="bank-balance">Bank Balance: {bankBalance} XTZ</span>
     {/if}
+    <div class="connect-wallet-container">
+      {#if wallet}
+        <button on:click={disconnectWallet}>Disconnect Wallet</button>
+      {:else}
+        <button on:click={connectWallet}>Connect Wallet</button>
+      {/if}
+    </div>
   </div>
 </header>
+
 
 
 <main>
@@ -155,32 +160,17 @@
           <p>L'adresse du wallet connecté est {address}.</p>
           <p>Son solde en tez est {balance}.</p>
           <p>Son solde dans la banque est {bankBalance}.</p>
+         
           <p>
-            Pour obtenir des tez, allez à <a href="https://faucet.ghostnet.teztnets.xyz/" target="_blank">
-              https://faucet.ghostnet.teztnets.xyz/
-            </a>.
-          </p>
-          <p>
-            Déposer des tez :
+            Acheter du CO3 :
             <input type="number" bind:value={depositAmount} min="1" max="100" />
             <input type="range" bind:value={depositAmount} min="1" max="100" />
             <button on:click={deposit} disabled={!depositButtonActive}>
               {depositButtonLabel}
             </button>
           </p>
-          <p>
-            Retirer des tez :
-            <button on:click={withdraw} disabled={!withdrawButtonActive}>
-              {withdrawButtonLabel}
-            </button>
-          </p>
-          <label for="tezosAddress">Entrez votre adresse Tezos :</label>
-          <input type="text" id="tezosAddress" placeholder="Votre adresse Tezos">
-          <button id="checkTransactions">Vérifier les transactions</button>
-          <div id="transactionsResult">Le nombre de transactions sera affiché ici.</div>
-          <p>
-            <button on:click={disconnectWallet}> Déconnecter le wallet </button>
-          </p>
+          
+        
         {/if}
       </div>
     </section>
@@ -192,19 +182,23 @@
           <img src="src/assets/banquise.jpeg" alt="Description image 1">
           <p>Description image 1</p>
           <input type="text" placeholder="Votre texte ici">
+          <button class="donate-button">Donnez pour cette cause</button> <!-- Bouton ajouté -->
         </div>
         <div class="image-box">
           <img src="src/assets/foret.jpeg" alt="Description image 2">
           <p>Description image 2</p>
           <input type="text" placeholder="Votre texte ici">
+          <button class="donate-button">Donnez pour cette cause</button> <!-- Bouton ajouté -->
         </div>
         <div class="image-box">
           <img src="src/assets/planet.jpeg" alt="Description image 3">
           <p>Description image 3</p>
           <input type="text" placeholder="Votre texte ici">
+          <button class="donate-button">Donnez pour cette cause</button> <!-- Bouton ajouté -->
         </div>
       </div>
     </section>
+    
 
   <div class="card">
     {#if wallet}
@@ -227,12 +221,7 @@
           {depositButtonLabel}
         </button>
       </p>
-      <p>
-        Withdraw tez:
-        <button on:click={withdraw} disabled={!withdrawButtonActive}>
-          {withdrawButtonLabel}
-        </button>
-      </p>
+      
       <p>
         <button on:click={disconnectWallet}> Disconnect wallet </button>
       </p>
@@ -251,15 +240,58 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  background-image: url('src/assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour améliorer la visibilité du texte */
+  padding: 10px 50px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f5f5f5;
-  padding: 10px 50px;
+}
+
+main {
+  padding-top: 80px; /* Ajustez cette valeur en fonction de la hauteur de votre en-tête */
+}
+
+.site-header {
+  
+  display: flex;
+  justify-content: space-between; /* Déjà en place, mais vous pouvez expérimenter avec d'autres valeurs si nécessaire */
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; /* S'assurer que l'en-tête reste au-dessus des autres éléments */
+  background-color: #e0c9c9; /* Ou tout autre couleur de fond que vous utilisez */
+  padding: 5px 50px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.wallet-and-balance-container {
+  display: flex;
+  align-items: center;
+}
+
+.bank-balance {
+  margin-right: 20px; /* Ajoutez de l'espace entre le solde et le bouton */
+  font-size: 16px;
+  color: #fff; /* Changez la couleur au besoin pour mieux se voir sur le fond sombre */
 }
 
 .logo-container img {
@@ -305,6 +337,7 @@ body, html {
 .image-box input {
   margin-top: 5px;
 }
+
 
 
 .connect-wallet-container button {
