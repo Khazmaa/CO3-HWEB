@@ -5,7 +5,7 @@
     let address = '';
     export let nbr_tx;
 
-    async function fetchTransactionsCount(address) {
+    const fetchTransactionsCount = async (address) => {
         const url = `https://api.ghostnet.tzkt.io/v1/accounts/${address}/operations`;
         console.log("url = ", url);
         try {
@@ -17,13 +17,12 @@
         }
     }
 
-    // Fonction pour gérer la soumission du formulaire
-    function handleSubmit() {
+    const handleSubmit = async () => {
         if (!address) {
             alert('Veuillez entrer une adresse Tezos valide.');
             return;
         }
-        fetchTransactionsCount(address);
+        await fetchTransactionsCount(address);
     }
 </script>
 
