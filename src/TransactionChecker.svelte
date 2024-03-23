@@ -44,6 +44,6 @@
         <button on:click={handleClick}>Neutralize your environmental impact!</button>
     {/if}
 </div>
-
+    
 
   
