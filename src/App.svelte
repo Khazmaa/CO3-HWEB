@@ -68,8 +68,6 @@
     <h1>CO3</h1>
     <section id="section1" class="full-screen-section">
         <h1>Section 1: Home</h1>
-        
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </section>
     <section id="section2" class="full-screen-section">
         <h1>Section 2: Checker</h1>

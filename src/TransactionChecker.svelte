@@ -13,7 +13,6 @@
     const fetchTransactionsCount = async () => {
         const address = await walletHandler.getPKH();
         const url = `https://api.ghostnet.tzkt.io/v1/accounts/${address}/operations`;
-        console.log("url = ", url);
         try {
             const axiosResponse = await axios.get(url);
             co2_emit = axiosResponse.data.length * GR_PER_TX;
