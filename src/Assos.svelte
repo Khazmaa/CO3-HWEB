@@ -40,10 +40,7 @@
     .image:hover img {
         filter: blur(8px);
     }
-    .Assos p, .Assos button {
-    text-align: center; /* Centre le texte horizontalement */
-    font-size: 1.1em; /* Augmente la taille du texte */
-    font-weight: bold; /* Rend le texte en gras */
+    
 }
 
     /* Additional styles */

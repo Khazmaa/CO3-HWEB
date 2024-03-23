@@ -100,26 +100,6 @@ main {
     margin-top: 20px; /* Ajoute de l'espace au-dessus du titre */
     margin-bottom: 20px; /* Ajoute de l'espace en dessous du titre */
 }
-.button-container {
-    display: flex;
-    justify-content: center; /* Centre le contenu horizontalement */
-}
-
-.custom-button {
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #457b9d; /* Couleur de fond */
-    color: #fff; /* Couleur du texte */
-    border: none; /* Supprime la bordure */
-    border-radius: 6px; /* Ajoute des coins arrondis */
-    cursor: pointer; /* Curseur de la souris */
-    transition: background-color 0.3s, box-shadow 0.2s; /* Animation de transition */
-}
-
-.custom-button:hover {
-    background-color: #61a0c7; /* Couleur de fond au survol */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre au survol */
-}
 
   
 @media (max-width: 768px) {
