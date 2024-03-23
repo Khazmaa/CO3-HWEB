@@ -1,13 +1,12 @@
 <script>
     import {stringToBytes} from "@taquito/utils";
     import {InMemorySigner} from "@taquito/signer";
-    import axios from "axios";
-    import * as tty from "tty";
 
     const pubkeyAddress = import.meta.env.VITE_PUBKEY_ADMIN;
     const sc_address = import.meta.env.VITE_SC_SBT_ADDRESS;
     const private_key = import.meta.env.VITE_PRIVATE_KEY_SC;
-    const ipfs_api_key = import.meta.env.VITE_IPFS_API_KEY;
+    const ipfs_api_jwt = import.meta.env.VITE_IPFS_API_JWT;
+
     const cost_grams = 0.000167 / 2.5; //
 
     export let co2_emit;
@@ -15,37 +14,23 @@
     export let walletHandler;
     export let tezos;
 
-    tezos.setProvider({
-        signer: new InMemorySigner(private_key),
-    });
+    tezos.setProvider({signer: new InMemorySigner(private_key)});
 
     const upload_to_ipfs = async (data) => {
-
-        formData.append('file', file)
-
-        const pinataMetadata = JSON.stringify({
-            name: 'File name',
-        });
-        formData.append('pinataMetadata', pinataMetadata);
-
-        const pinataOptions = JSON.stringify({
-            cidVersion: 0,
-        })
-        formData.append('pinataOptions', pinataOptions);
-
-        try{
-            const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
-                maxBodyLength: "Infinity",
-                headers: {
-                    'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-                    'Authorization': `Bearer ${}`
-                }
+        try {
+            let formData = new FormData();
+            formData.append('file', new Blob([data], {type: 'file'}));
+            formData.append("pinataMetadata", JSON.stringify({name: "CO3 Certificate"}));
+            const res = await fetch(`https://api.pinata.cloud/pinning/pinFileToIPFS`, {
+                method: 'POST',
+                headers: {Authorization: `Bearer ${ipfs_api_jwt}`},
+                body: formData,
             });
-            console.log(res.data);
+            return res.json();
         } catch (error) {
-            console.log(error);
+            console.log('error when uploading to ipfs', error);
+            throw error;
         }
-        console.log("IPFS response: ", res.data);
     }
 
     const emit_nft = async (amount) => {
@@ -63,12 +48,10 @@
             decimals: 0,
             attributes: [],
         });
-        await upload_to_ipfs(json_metadata);
+        const ipfs_hash = await upload_to_ipfs(json_metadata);
         const op = await contract.methodsObject.mint([{
             to_: address,
-            metadata: {
-                "": stringToBytes(JSON.stringify(json_metadata)),
-            },
+            metadata: {"": stringToBytes(`ipfs://${ipfs_hash.IpfsHash}`)},
         }]).send();
         console.log('ing for confirmation');
         const hash = await op.confirmation(1);
@@ -84,14 +67,9 @@
             const op = await tezos.wallet.transfer({to: pubkeyAddress, amount: amount}).send();
             const status = await op.confirmation(1);
             console.log(`https://ghost.tzstats.com/${status.hash}`);
-        } catch (e) {
-            console.error("Error when trying to buy some coin: ", e);
-        }
-        console.log("Bought done\n");
-        try {
             await emit_nft(amount);
         } catch (e) {
-            console.error("Error when trying to emit NFT: ", e);
+            console.error("Error when trying to buy some coin: ", e);
         }
     }
 </script>

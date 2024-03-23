@@ -14,10 +14,14 @@
 <div>
     {#if walletHandler}
         {#if !user_check && !user_buy}
-            <TransactionChecker bind:nbr_tx={nbr_tx} bind:co2_emit={co2_emit} bind:user_check={user_check} walletHandler={walletHandler}/>
+            <TransactionChecker bind:nbr_tx={nbr_tx} bind:co2_emit={co2_emit} bind:user_check={user_check}
+                                walletHandler={walletHandler}/>
         {/if}
         {#if user_check && !user_buy}
             <BuyPoint bind:user_buy={user_buy} {co2_emit} {walletHandler} {tezos}/>
+        {/if}
+        {#if user_check && user_buy}
+            <p>Transaction completed ! Thanks again for your support!</p>
         {/if}
     {/if}
     {#if !walletHandler}
