@@ -1,99 +1,99 @@
 html {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  font-family: 'Poppins', sans-serif;
-  background-image: url('src/assets/bg.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('src/assets/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
- 
+
 main {
-  padding-top: 100px;
+    padding-top: 100px;
 }
 
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 15px 50px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar .nav-link {
-  text-decoration: none;
-  color: #fff;
-  margin: 0 20px;
-  font-size: 18px;
-  transition: color 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
 .navbar .nav-link:hover, .navbar .nav-link:focus {
-  color: #a8dadc;
+    color: #a8dadc;
 }
 
 .wallet-and-balance-container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .bank-balance {
-  margin-right: 20px;
-  font-size: 18px;
-  color: #f1faee;
+    margin-right: 20px;
+    font-size: 18px;
+    color: #f1faee;
 }
 
 .logo-container img {
-  height: 60px;
+    height: 60px;
 }
 
 .connect-wallet-container button {
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #f1faee;
-  margin-right: 75px;
-  transition: background-color 0.3s, box-shadow 0.2s;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #f1faee;
+    margin-right: 75px;
+    transition: background-color 0.3s, box-shadow 0.2s;
 }
 
 .connect-wallet-container button:hover {
-  background-color: #457b9d;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: #457b9d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .image-container {
-  display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: flex-start; /* Align items from the start vertically */
-  flex-wrap: wrap; /* Allow items to wrap */
-  gap: 20px;
-  padding: 20px;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: flex-start; /* Align items from the start vertically */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 20px;
+    padding: 20px;
 }
 
 .image-box {
-  text-align: center;
-  flex: 1 1 300px; /* Change to flex-grow: 1 to allow boxes to grow and fill the available space */
-  margin-bottom: 40px;
+    text-align: center;
+    flex: 1 1 300px; /* Change to flex-grow: 1 to allow boxes to grow and fill the available space */
+    margin-bottom: 40px;
 }
 
 .image-box img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .donate-button {
-  margin-top: 10px;
-  background-color: #e63946;
-  color: #fff;
-  transition: background-color 0.3s;
+    margin-top: 10px;
+    background-color: #e63946;
+    color: #fff;
+    transition: background-color 0.3s;
 }
 
 .donate-button:hover {
-  background-color: #f4a261;
+    background-color: #f4a261;
 }

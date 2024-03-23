@@ -1,4 +1,4 @@
-html,body {
+html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -9,13 +9,13 @@ html,body {
     background-attachment: fixed;
     color: #fff;
 
-    
+
 }
-   
+
 main {
     padding-top: 100px;
 }
-  
+
 .site-header {
     position: fixed;
     top: 0;
@@ -24,12 +24,12 @@ main {
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 15px 50px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-  
+
 .navbar .nav-link {
     text-decoration: none;
     color: #fff;
@@ -37,26 +37,26 @@ main {
     font-size: 18px;
     transition: color 0.3s ease;
 }
-  
+
 .navbar .nav-link:hover, .navbar .nav-link:focus {
     color: #a8dadc;
 }
-  
+
 .wallet-and-balance-container {
     display: flex;
     align-items: center;
 }
-  
+
 .bank-balance {
     margin-right: 20px;
     font-size: 18px;
     color: #f1faee;
 }
-  
+
 .logo-container img {
     height: 60px;
 }
-  
+
 .connect-wallet-container button {
     padding: 12px 24px; /* Ajustez le padding pour obtenir la forme désirée */
     font-size: 16px;
@@ -74,7 +74,7 @@ main {
     background-color: #65d4fa; /* Couleur de fond au survol */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
-  
+
 .image-box {
     margin-bottom: 40px;
 }
@@ -94,14 +94,13 @@ main {
 }
 
 
-
 .full-screen-section h1 {
     text-align: center; /* Centre le titre horizontalement */
     margin-top: 20px; /* Ajoute de l'espace au-dessus du titre */
     margin-bottom: 20px; /* Ajoute de l'espace en dessous du titre */
 }
 
-  
+
 @media (max-width: 768px) {
     .image-box {
         flex: 0 1 calc(50% - 20px); /* Exemple pour deux images par ligne sur les petits écrans */
@@ -137,7 +136,7 @@ main {
     color: #fff;
     transition: background-color 0.3s;
 }
-  
+
 .donate-button:hover {
     background-color: #f4a261;
 }
