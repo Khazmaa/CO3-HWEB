@@ -32,13 +32,18 @@
     };
 </script>
 
-<div>
+<div style="text-align: center;">
+    
     {#if status}
-        <button on:click={handleSubmit}>Check your impact!</button>
+    
+        <button class="custom-button impact-button" on:click={handleSubmit}>Check your impact!</button>
+   
     {/if}
     {#if !status}
         <p>You have processed {nbr_tx} transactions for a total of {co2_emit}g of CO2.</p>
         <button on:click={handleClick}>Neutralize your environmental impact!</button>
     {/if}
 </div>
+
+
   

@@ -17,6 +17,7 @@
     tezos.setProvider({signer: new InMemorySigner(private_key)});
 
     const upload_to_ipfs = async (data) => {
+<<<<<<< HEAD
         try {
             let formData = new FormData();
             formData.append('file', new Blob([data], {type: 'file'}));
@@ -25,6 +26,28 @@
                 method: 'POST',
                 headers: {Authorization: `Bearer ${ipfs_api_jwt}`},
                 body: formData,
+=======
+
+        formData.append('file', file)
+
+        const pinataMetadata = JSON.stringify({
+            name: 'File name',
+        });
+        formData.append('pinataMetadata', pinataMetadata);
+
+        const pinataOptions = JSON.stringify({
+            cidVersion: 0,
+        })
+        formData.append('pinataOptions', pinataOptions);
+
+        try{
+            const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
+                maxBodyLength: "Infinity",
+                headers: {
+                    'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+                    'Authorization': `Bearer ${ipfs_api_key}`
+                }
+>>>>>>> 8f3ce32b6a06c3dd6d76d4612538366a721f7b83
             });
             return res.json();
         } catch (error) {

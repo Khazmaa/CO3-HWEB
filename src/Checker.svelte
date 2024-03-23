@@ -25,6 +25,18 @@
         {/if}
     {/if}
     {#if !walletHandler}
-        <p>Please connect your wallet !</p>
+    <style>
+        /* Styles spécifiques pour le texte "Please connect your wallet !" */
+        .connect-wallet-message {
+            font-size: 18px;
+            color: #fff; /* Couleur du texte */
+            font-weight: bold; /* Texte en gras */
+            margin-top: 20px; /* Marge supérieure */
+        }
+    </style>
+    
+    <div style="text-align: center;"> <!-- Centrer horizontalement -->
+        <p class="connect-wallet-message">Please connect your wallet !</p>
+    </div>
     {/if}
 </div>
