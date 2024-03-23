@@ -22,7 +22,7 @@
 
     const handleSubmit = async () => {
         if (!address) {
-            alert('Veuillez entrer une adresse Tezos valide.');
+            alert('Please provide an address.');
             return;
         }
         await fetchTransactionsCount(address);
