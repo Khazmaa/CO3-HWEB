@@ -40,7 +40,7 @@
         <img src="src/assets/logo.png" alt="Logo" class="logo">
     </div>
     <nav class="navbar">
-        <a href="#section1" class="nav-link">Home</a>
+        <a href="css/style.css" class="nav-link">Home</a>
         <a href="#section2" class="nav-link">Checker</a>
         <a href="#section3" class="nav-link">Associations</a>
     </nav>
@@ -75,25 +75,24 @@
 
     <section id="section3" class="full-screen-section">
         <h1>Section 3: Associations</h1>
-        <div class="image-container">
-            <div class="image-box">
-                <img src="src/assets/banquise.jpeg" alt="Description image 1">
+        <div class="wrapper">
+            <div class="image">
+                <img src="src/assets/outan.png" alt="Description image 1">
+                <div class="content">
                 <p>Description image 1</p>
-                <input type="text" placeholder="Votre texte ici">
-                <button on:click={withdraw} disabled={!withdrawButtonActive}>
-                    {withdrawButtonLabel}
-                </button>
+            
+              </div>
             </div>
             <div class="image-box">
-                <img src="src/assets/foret.jpeg" alt="Description image 2">
+                <img src="src/assets/parc.png" alt="Description image 2">
                 <p>Description image 2</p>
                 <input type="text" placeholder="Votre texte ici">
                 <button on:click={withdraw} disabled={!withdrawButtonActive}>
                     {withdrawButtonLabel}
-                </button>
+                </button>  
             </div>
             <div class="image-box">
-                <img src="src/assets/planet.jpeg" alt="Description image 3">
+                <img src="src/assets/tree.png" alt="Description image 3">
                 <p>Description image 3</p>
                 <input type="text" placeholder="Votre texte ici">
 
