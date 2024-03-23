@@ -1,5 +1,4 @@
 <script>
-    import { withdraw } from "./Bank.js";
     export let path_image;
     export let description;
     export let withdrawButtonActive;

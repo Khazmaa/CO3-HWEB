@@ -5,12 +5,10 @@
     import Checker from "./Checker.svelte";
     import Assos from "./Assos.svelte";
   
-    import {getBalanceCO3, bankCO3} from './Bank.js'
 
     const rpcUrl = "https://ghostnet.ecadinfra.com";
     const tezos = new TezosToolkit(rpcUrl);
     let walletHandler;
-    let address;
     let withdrawButtonActive = true;
     let withdrawButtonLabel = "Donate";
 
@@ -24,7 +22,6 @@
         });
         await newWallet.requestPermissions();
         address = await newWallet.getPKH();
-        await getBalanceCO3(tezos, address);
         walletHandler = newWallet;
     };
 
@@ -47,11 +44,9 @@
         <a href="#section3" class="nav-link">Associations</a>
     </nav>
     <div class="wallet-and-balance-container">
-        {#key $bankCO3}
             {#if walletHandler}
-                <span class="bank-balance">Balance: {$bankCO3} CO3</span>
+                <span class="bank-balance">Balance: PLACEHOLDER CO3</span>
             {/if}
-        {/key}
         <div class="connect-wallet-container">
             {#if walletHandler}
                 <button on:click={disconnectWallet}>Disconnect Wallet</button>
