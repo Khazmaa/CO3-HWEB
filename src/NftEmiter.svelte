@@ -1,12 +1,13 @@
 <script>
-    import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
-    import { char2Bytes } from "@taquito/utils"
-    import { InMemorySigner, importKey } from "@taquito/signer"
+    import {char2Bytes} from "@taquito/utils"
+    import {InMemorySigner} from "@taquito/signer"
 
-    const sc_address = import.meta.env.VITE_SC_ADDRESS;
-
-    const tezos = new TezosToolkit(' https://ghostnet.ecadinfra.com');
+    const sc_address = import.meta.env.VITE_SC_SBT_ADDRESS;
     const private_key = import.meta.env.VITE_PRIVATE_KEY_SC;
+
+    export let tezos;
+    export let user_emit;
+
     tezos.setProvider({
         signer: new InMemorySigner(private_key),
     });
@@ -24,13 +25,14 @@
             const op = await contract.methodsObject.mint([{
                 to_: address,
                 metadata: {
-                    "CO3" : char2Bytes("CO3 Certificate"),
+                    "": char2Bytes("CO3 Certificat"),
                 },
             }]).send();
             console.log('ing for confirmation');
             const hash = await op.confirmation(1);
             console.log(`Operation injected https://ghost.tzstats.com/${hash}`);
             alert("SBT have been sent, check your wallet on your favorite explorer !");
+            user_emit = true;
         } catch (e) {
             console.log("Error minting nft: ", e);
         }
@@ -38,7 +40,7 @@
 </script>
 
 <div>
-    <input type="text" bind:value={address} placeholder="Choose the address you want to receive your NFT on.">
+    <input type="text" bind:value={address} placeholder="SBT Wallet Target">
     <button on:click={() => emit_nft(address)}>
         Submit
     </button>
