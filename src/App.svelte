@@ -67,10 +67,10 @@
 
     <h1>CO3</h1>
     <section id="section1" class="full-screen-section">
-        <h1>Section 1: Home</h1>
+        <h1>CO3 : For a Greener Blockchain !</h1>
     </section>
     <section id="section2" class="full-screen-section">
-        <h1>Section 2: Checker</h1>
+        <h1> Wallet Checker</h1>
         <Checker {tezos} {walletHandler}></Checker>
         <br>
     </section>

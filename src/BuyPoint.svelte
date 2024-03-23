@@ -38,7 +38,7 @@
                 maxBodyLength: "Infinity",
                 headers: {
                     'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-                    'Authorization': `Bearer ${}`
+                    'Authorization': `Bearer ${ipfs_api_key}`
                 }
             });
             console.log(res.data);

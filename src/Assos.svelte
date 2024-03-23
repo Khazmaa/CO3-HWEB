@@ -41,7 +41,7 @@
         filter: blur(8px);
     }
     
-}
+
 
     /* Additional styles */
  
