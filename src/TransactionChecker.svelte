@@ -1,5 +1,5 @@
 <script>
-
+    
     import axios from 'axios';
     // Déclaration des variables
     let address = '';
@@ -10,7 +10,8 @@
         console.log("url = ", url);
         try {
             const axiosResponse = await axios.get(url);
-            nbr_tx = axiosResponse.data.length;
+            let tmp_tx = axiosResponse.data.length;
+            return tmp_tx;
             console.log('nbr tx =', nbr_tx);
         } catch (e) {
             console.error("error occurred when fetching tx: ", e);
@@ -22,7 +23,7 @@
             alert('Veuillez entrer une adresse Tezos valide.');
             return;
         }
-        await fetchTransactionsCount(address);
+        nbr_tx = await fetchTransactionsCount(address);
     }
 </script>
 
