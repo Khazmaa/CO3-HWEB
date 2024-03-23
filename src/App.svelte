@@ -124,7 +124,7 @@
 
 <header class="site-header">
   <div class="logo-container">
-    <img src="/path/to/your/logo.png" alt="Logo" class="logo">
+    <img src="src/assets/logo.png" alt="Logo" class="logo">
   </div>
   <nav class="navbar">
     <a href="#section1" class="nav-link">Home</a>
@@ -187,9 +187,24 @@
   
     <section id="section3" class="full-screen-section">
       <h1>Section 3: Associations</h1>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div class="image-container">
+        <div class="image-box">
+          <img src="src/assets/banquise.jpeg" alt="Description image 1">
+          <p>Description image 1</p>
+          <input type="text" placeholder="Votre texte ici">
+        </div>
+        <div class="image-box">
+          <img src="src/assets/foret.jpeg" alt="Description image 2">
+          <p>Description image 2</p>
+          <input type="text" placeholder="Votre texte ici">
+        </div>
+        <div class="image-box">
+          <img src="src/assets/planet.jpeg" alt="Description image 3">
+          <p>Description image 3</p>
+          <input type="text" placeholder="Votre texte ici">
+        </div>
+      </div>
     </section>
-
 
   <div class="card">
     {#if wallet}
@@ -248,7 +263,7 @@ body, html {
 }
 
 .logo-container img {
-  height: 50px;
+  height: 100px;
 }
 
 .navbar {
@@ -265,6 +280,32 @@ body, html {
 .nav-link:hover {
   color: #646cff;
 }
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.image-box {
+  text-align: center;
+  width: 30%; /* Ajustez la largeur selon vos besoins */
+}
+
+.image-box img {
+  width: 100%; /* Ajustez cela pour contrôler la taille de l'image */
+  height: auto;
+}
+
+.image-box p {
+  margin: 10px 0;
+}
+
+.image-box input {
+  margin-top: 5px;
+}
+
 
 .connect-wallet-container button {
   padding: 10px 20px;
