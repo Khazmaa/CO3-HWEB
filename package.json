@@ -12,7 +12,7 @@
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "buffer": "^6.0.3",
     "events": "^3.3.0",
-    "svelte": "^4.0.5",
+    "svelte": "^4.2.12",
     "vite": "^4.4.5",
     "vite-compatible-readable-stream": "^3.6.1"
   },
