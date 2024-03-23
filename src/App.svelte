@@ -75,35 +75,6 @@
     </section>
     <section id="section3" class="full-screen-section">
         <h1>Section 3: Associations</h1>
-<<<<<<< HEAD
-        <div class="wrapper">
-            <div class="image">
-                <img src="src/assets/outan.png" alt="Description image 1">
-                <div class="content">
-                <p>Description image 1</p>
-            
-              </div>
-            </div>
-            <div class="image-box">
-                <img src="src/assets/parc.png" alt="Description image 2">
-                <p>Description image 2</p>
-                <input type="text" placeholder="Votre texte ici">
-                <button on:click={withdraw} disabled={!withdrawButtonActive}>
-                    {withdrawButtonLabel}
-                </button>  
-            </div>
-            <div class="image-box">
-                <img src="src/assets/tree.png" alt="Description image 3">
-                <p>Description image 3</p>
-                <input type="text" placeholder="Votre texte ici">
-
-                <button on:click={() => {
-                    withdraw(tezos, walletHandler)
-                }} disabled={!withdrawButtonActive}>
-                    {withdrawButtonLabel}
-                </button>
-            </div>
-=======
         <div class="image-container">
             <Assos
                     path_image={"src/assets/ice_floe.jpeg"}
@@ -129,7 +100,6 @@
                     tezos={tezos}
                     walletHandler={walletHandler}
             />
->>>>>>> 614ca6321d1cdc923c0c352ca093668f72b7b9cf
         </div>
     </section>
 </main>
