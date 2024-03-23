@@ -3,8 +3,7 @@
   import { NetworkType } from "@airgap/beacon-types";
   import { TezosToolkit } from "@taquito/taquito";
   import TransactionChecker from './TransactionChecker.svelte';
-  
-
+  import NftEmiter from "./NftEmiter.svelte";
 
   const rpcUrl = "https://ghostnet.ecadinfra.com";
   const Tezos = new TezosToolkit(rpcUrl); 
@@ -17,6 +16,7 @@
   
   let localNbrTx = 0;
   let nbr_tx = 0;
+  let co2_emit = 0; //in grammes
   let depositAmount = 1;
   let depositButtonActive = false;
   let depositButtonLabel = "Buy";
@@ -98,8 +98,8 @@
 
  
   const withdraw = async () => {
-    withdrawButtonActive = false;
-    withdrawButtonLabel = "Withdrawing...";
+    let withdrawButtonActive = false;
+    let withdrawButtonLabel = "Withdrawing...";
 
     Tezos.setWalletProvider(wallet);
     const contract = await Tezos.wallet.at(contractAddress);
@@ -175,7 +175,8 @@
     </section>
     <section id="section2" class="full-screen-section">
       <h1>Section 2: Checker</h1>
-      <TransactionChecker {nbr_tx}/>
+<!--      <TransactionChecker {nbr_tx} {co2_emit}/>-->
+      <NftEmiter/>
       <div class="card">
         {#if wallet}
           <p>L'adresse du wallet connecté est {address}.</p>

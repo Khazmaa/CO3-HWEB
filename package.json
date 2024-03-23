@@ -20,7 +20,9 @@
     "@airgap/beacon-types": "^4.0.12",
     "@taquito/beacon-wallet": "^17.3.2",
     "@taquito/rpc": "^19.1.0",
+    "@taquito/signer": "^19.1.0",
     "@taquito/taquito": "^17.3.2",
+    "@taquito/utils": "^19.1.0",
     "axios": "^1.6.8"
   }
 }
