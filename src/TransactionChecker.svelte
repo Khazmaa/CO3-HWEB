@@ -1,37 +1,37 @@
 <script>
+
+    import axios from 'axios';
+    // Déclaration des variables
     let address = '';
-    let transactionsCount = '';
-  
+    export let nbr_tx;
+
     async function fetchTransactionsCount(address) {
-      const url = `https://api.ghostnet.tzkt.io/v1/accounts/${address}/operations/count`;
-      console.log ("url = ", url);
-      try {
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-          throw new Error('Problème lors de la récupération du nombre de transactions');
+        const url = `https://api.ghostnet.tzkt.io/v1/accounts/${address}/operations`;
+        console.log("url = ", url);
+        try {
+            const axiosResponse = await axios.get(url);
+            nbr_tx = axiosResponse.data.length;
+            console.log('nbr tx =', nbr_tx);
+        } catch (e) {
+            console.error("error occurred when fetching tx: ", e);
         }
-        const count = await response.text(); // Utiliser .text() car l'API retourne un nombre brut
-        transactionsCount = `Nombre de transactions : ${count}`;
-      } catch (error) {
-        console.error('Erreur lors de la récupération des transactions:', error);
-        transactionsCount = 'Impossible de récupérer le nombre de transactions. Vérifiez l\'adresse.';
-      }
     }
-  
+
     // Fonction pour gérer la soumission du formulaire
     function handleSubmit() {
-      if (!address) {
-        alert('Veuillez entrer une adresse Tezos valide.');
-        return;
-      }
-      fetchTransactionsCount(address);
+        if (!address) {
+            alert('Veuillez entrer une adresse Tezos valide.');
+            return;
+        }
+        fetchTransactionsCount(address);
     }
-  </script>
-  
-  <div>
+</script>
+
+<div>
+    {#key nbr_tx}
     <input type="text" bind:value={address} placeholder="Entrez votre adresse Tezos ici">
     <button on:click={handleSubmit}>Vérifier le nombre de transactions</button>
-    <p>{transactionsCount}</p>
-  </div>
+    <p> Nbr tx: {nbr_tx}</p>
+    {/key}
+</div>
   
