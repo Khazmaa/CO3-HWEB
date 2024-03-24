@@ -1,4 +1,4 @@
-# CO3:
+# CO3 / PMU Labs:
 
 # Stack:
 - For our website we use the library taquito that allow us to interact with tezos blockchain in combination with Svelte to handle the frontend management.
