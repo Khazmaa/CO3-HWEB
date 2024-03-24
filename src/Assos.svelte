@@ -109,6 +109,16 @@
         opacity: 1;
     }
 
+    .assos-custom-button {
+        padding: 9px 24px;
+        font-size: 10px;
+        background-color: #49b357; /* Couleur de fond */
+        color: #fff; /* Couleur du texte */
+        border: none; /* Supprime la bordure */
+        border-radius: 6px; /* Ajoute des coins arrondis */
+        cursor: pointer; /* Curseur de la souris */
+        transition: background-color 0.3s, box-shadow 0.2s; /* Animation de transition */
+    }
 
 </style>
 
@@ -119,6 +129,8 @@
             <p>{description}</p>
         </div>
         <input type="text" placeholder="Amount" bind:value={amount}>
-        <button class="custom-button" on:click={() => donateCO3(amount)} disabled={!withdrawButtonActive}>
+        <button class="assos-custom-button" on:click={() => donateCO3(amount)} disabled={!withdrawButtonActive}>
+            Donate
+        </button>
     </div>
 </div>
