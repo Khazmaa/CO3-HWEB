@@ -5,7 +5,7 @@
     import Checker from "./Checker.svelte";
     import Assos from "./Assos.svelte";
   
-    import {getBalanceCO3, bankCO3} from './Bank.js'
+    
 
     const rpcUrl = "https://ghostnet.ecadinfra.com";
     const tezos = new TezosToolkit(rpcUrl);
@@ -65,13 +65,19 @@
 
 <main>
 
-    <h1>CO3</h1>
+    
     <section id="section1" class="full-screen-section">
         <h1>CO3 : For a Greener Blockchain !</h1>
+        <img src="src/assets/logo.png" alt="Logo" >
+
     </section>
     <section id="section2" class="full-screen-section">
         <h1> Wallet Checker</h1>
-        <Checker {tezos} {walletHandler}></Checker>
+        {#key walletHandler}
+            <Checker {tezos} {walletHandler}/>
+        {/key} 
+        
+
         <br>
     </section>
     <section id="section3" class="full-screen-section">
@@ -111,3 +117,8 @@
         
     </section>
 </main>
+
+
+<div style="text-align: center;">
+    <img src="src/assets/logo.png" alt="Logo" class="logo">
+</div>

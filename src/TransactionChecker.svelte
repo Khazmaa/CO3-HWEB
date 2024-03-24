@@ -41,9 +41,9 @@
     {/if}
     {#if !status}
         <p>You have processed {nbr_tx} transactions for a total of {co2_emit}g of CO2.</p>
-        <button on:click={handleClick}>Neutralize your environmental impact!</button>
+        <button class="custom-button" on:click={handleClick}>Neutralize your environmental impact!</button>
     {/if}
 </div>
-    
+
 
   
