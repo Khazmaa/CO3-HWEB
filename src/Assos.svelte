@@ -1,8 +1,39 @@
 <script>
+    import {MichelsonMap} from "@taquito/taquito";
+    import {fetch_co3_balance, check_co3_possession, upload_to_ipfs} from "./check_co3.js";
+
+    const sc_address = import.meta.env.VITE_SC_SBT_ADDRESS;
+
+    const pubkeyAddress = import.meta.env.VITE_PUBKEY_ADMIN;
     export let path_image;
     export let description;
     export let withdrawButtonActive;
     export let withdrawButtonLabel;
+    export let tezos;
+    export let walletHandler;
+    export let bankCO3;
+
+    let amount = '';
+    const donateCO3 = async (amount) => {
+        if (!walletHandler) {
+            alert("Please connect your wallet first !");
+            return;
+        }
+        const address = await walletHandler.getPKH();
+        const tok_metadata = await check_co3_possession(tezos, sc_address, address)
+        if (tok_metadata === null) {
+            alert("You dont have a CO3 Certificate, refund your carbon impact first !");
+            return;
+        }
+        if (tok_metadata.CO3 < amount) {
+            alert("You dont have enough CO3 to donate this much ! Here your balance : " + tok_metadata.CO3 + " CO3");
+            return
+        }
+        const op = await tezos.wallet.transfer({to: pubkeyAddress, amount: amount}).send();
+        await op.confirmation(1);
+        bankCO3 -= amount;
+        console.log("Donation done");
+    }
 </script>
 
 <svelte:head>
@@ -87,9 +118,8 @@
         <div class="content">
             <p>{description}</p>
         </div>
-        <input type="text" placeholder="Amount">
-        <button on:click={() => { console.log("NEED TO IMPLEMENT WITHDRAW"); alert(); }}
-                disabled={!withdrawButtonActive}>
+        <input type="text" placeholder="Amount" bind:value={amount}>
+        <button on:click={() => donateCO3(amount)} disabled={!withdrawButtonActive}>
             {withdrawButtonLabel}
         </button>
     </div>

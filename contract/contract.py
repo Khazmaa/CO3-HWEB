@@ -37,3 +37,4 @@ def test():
     admin_address = sp.address('tz1UM4Pb6B7h74nrgGWCAyGGrQwJ9BhrPzrE')
     sc = sp.test_scenario("Nft", [fa2.t, fa2.main, CO3])
     SBT = CO3.SBT(metadata=sp.big_map(), ledger={}, token_metadata=[])
+    sc += SBT

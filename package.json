@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clear_nft": "node clear_all_token_sc.js"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
@@ -22,6 +23,8 @@
     "@taquito/rpc": "^19.1.0",
     "@taquito/signer": "^19.1.0",
     "@taquito/taquito": "^17.3.2",
+    "@taquito/tzip12": "^19.1.0",
+    "@taquito/tzip16": "^19.1.0",
     "@taquito/utils": "^19.1.0",
     "axios": "^1.6.8"
   }

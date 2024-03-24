@@ -1,40 +1,22 @@
 <script>
     import {stringToBytes} from "@taquito/utils";
     import {InMemorySigner} from "@taquito/signer";
+    import {check_co3_possession, upload_to_ipfs} from "./check_co3.js";
 
     const pubkeyAddress = import.meta.env.VITE_PUBKEY_ADMIN;
     const sc_address = import.meta.env.VITE_SC_SBT_ADDRESS;
     const private_key = import.meta.env.VITE_PRIVATE_KEY_SC;
-    const ipfs_api_jwt = import.meta.env.VITE_IPFS_API_JWT;
 
-    const cost_grams = 0.000167 / 2.5; //
-
+    // const cost_grams = 0.000167 / 2.5; //
+    const cost_grams = 2; //
     export let co2_emit;
     export let user_buy;
     export let walletHandler;
     export let tezos;
-
     tezos.setProvider({signer: new InMemorySigner(private_key)});
 
-    const upload_to_ipfs = async (data) => {
-        try {
-            let formData = new FormData();
-            formData.append('file', new Blob([data], {type: 'file'}));
-            formData.append("pinataMetadata", JSON.stringify({name: "CO3 Certificate"}));
-            const res = await fetch(`https://api.pinata.cloud/pinning/pinFileToIPFS`, {
-                method: 'POST',
-                headers: {Authorization: `Bearer ${ipfs_api_jwt}`},
-                body: formData,
-            });
-            return res.json();
-        } catch (error) {
-            console.log('error when uploading to ipfs', error);
-            throw error;
-        }
-    }
 
-    const emit_nft = async (amount) => {
-        const address = await walletHandler.getPKH();
+    const emit_nft = async (amount, address) => {
 
         console.log('getting contract');
         const contract = await tezos.contract.at(sc_address);
@@ -43,7 +25,7 @@
             name: "CO3 Certificate",
             description: "CO3 Certificate",
             rights: "No License",
-            minter: sc_address.toString(),
+            owner: address,
             date: new Date().toISOString(),
             symbol: "CO3",
             decimals: 0,
@@ -66,12 +48,18 @@
     }
 
     const buy_CO3 = async (amount) => {
+        const address = await walletHandler.getPKH();
         try {
-            tezos.setWalletProvider(walletHandler);
+            // if (await check_co3_possession(tezos, sc_address, address) === null) {
             const op = await tezos.wallet.transfer({to: pubkeyAddress, amount: amount}).send();
             await op.confirmation(1);
-            await emit_nft(amount);
+            await emit_nft(amount, address);
+
+            // } else {
+            //     alert("You already have a CO3 certificate, you can't buy another one");
+            // }
         } catch (e) {
+            // TODO UPDATE CO3 AMOUNT
             console.error("Error when trying to buy some coin: ", e);
         }
     }
