@@ -42,18 +42,23 @@
         let json_metadata = JSON.stringify({
             name: "CO3 Certificate",
             description: "CO3 Certificate",
+            rights: "No License",
             minter: sc_address.toString(),
-            CO3: amount.toString(),
+            date: new Date().toISOString(),
             symbol: "CO3",
             decimals: 0,
             attributes: [],
+            isBooleanAmount: false,
+            shouldPreferSymbol: false,
+            royalties: [],
+            CO3: amount.toString(),
         });
         const ipfs_hash = await upload_to_ipfs(json_metadata);
         const op = await contract.methodsObject.mint([{
             to_: address,
             metadata: {"": stringToBytes(`ipfs://${ipfs_hash.IpfsHash}`)},
         }]).send();
-        console.log('ing for confirmation');
+        console.log('waiting for confirmation');
         const hash = await op.confirmation(1);
         console.log(`Operation injected https://ghost.tzstats.com/${hash}`);
         alert("A NFT Certificate have been sent, check your wallet on your favorite explorer !");
@@ -61,12 +66,10 @@
     }
 
     const buy_CO3 = async (amount) => {
-        console.log("amount: ", amount);
         try {
             tezos.setWalletProvider(walletHandler);
             const op = await tezos.wallet.transfer({to: pubkeyAddress, amount: amount}).send();
-            const status = await op.confirmation(1);
-            console.log(`https://ghost.tzstats.com/${status.hash}`);
+            await op.confirmation(1);
             await emit_nft(amount);
         } catch (e) {
             console.error("Error when trying to buy some coin: ", e);

@@ -3,7 +3,6 @@
     import axios from 'axios';
 
     const GR_PER_TX = 2.5; //source: https://tezos.com/carbon/
-    let address = '';
     export let nbr_tx;
     export let co2_emit;
     export let user_check;
@@ -33,11 +32,11 @@
 </script>
 
 <div style="text-align: center;">
-    
+
     {#if status}
-    
+
         <button class="custom-button impact-button" on:click={handleSubmit}>Check your impact!</button>
-   
+
     {/if}
     {#if !status}
         <p>You have processed {nbr_tx} transactions for a total of {co2_emit}g of CO2.</p>

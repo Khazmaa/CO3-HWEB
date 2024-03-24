@@ -5,5 +5,3 @@
 - cleanup the website in general
 - add About us to the page
 
-
-{ "branch": "BLaxHzNJhBQHepkv2BqBMyp4rVkwPFpLApqJxhFyNy822LiLGkE", "contents": [ { "kind": "transaction", "source": "tz1UM4Pb6B7h74nrgGWCAyGGrQwJ9BhrPzrE", "fee": "317", "counter": "25564237", "gas_limit": "269", "storage_limit": "0", "amount": "14195", "destination": "tz1UM4Pb6B7h74nrgGWCAyGGrQwJ9BhrPzrE" } ] }
