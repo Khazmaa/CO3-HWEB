@@ -1,5 +1,6 @@
 # CO3 / PMU Labs:
-
+## Presentation:
+- https://www.canva.com/design/DAGAXdvr1hc/yk4wYX09b-V27CuNGjo-7Q/edit?utm_content=DAGAXdvr1hc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ## Stack:
 - For our website we use the library [Taquito](https://tezostaquito.io/) that allow us to interact with tezos blockchain in combination with Svelte to handle the frontend management.
 - Our SoulBondToken contract (can be found inside contract folder) was develop using [Smartpy](https://smartpy.io/) and its fa2 library.
