@@ -7,7 +7,8 @@
     import {fetch_co3_balance} from "./check_co3.js";
     import {Tzip12Module} from "@taquito/tzip12";
     import {Tzip16Module} from "@taquito/tzip16";
-
+    import AboutUs from './AboutUs.svelte';
+ 
 
     const rpcUrl = "https://ghostnet.ecadinfra.com";
     const tezos = new TezosToolkit(rpcUrl);
@@ -41,6 +42,9 @@
         await walletHandler.client.clearActiveAccount();
         walletHandler = undefined;
     };
+    
+  
+
 
 
 </script>
@@ -51,9 +55,10 @@
         <img src="src/assets/logo.png" alt="Logo" class="logo">
     </div>
     <nav class="navbar">
-        <a href="css/style.css" class="nav-link">Home</a>
+        <a href="#section1" class="nav-link">Home</a>
         <a href="#section2" class="nav-link">Checker</a>
         <a href="#section3" class="nav-link">Associations</a>
+        <a href="#section4" class="nav-link">About Us</a>
     </nav>
     <div class="wallet-and-balance-container">
         {#key bankCO3}
@@ -74,16 +79,30 @@
 
 <main>
 
-    <h1>CO3</h1>
+    
     <section id="section1" class="full-screen-section">
         <h1>CO3 : For a Greener Blockchain !</h1>
+    
+        <div style="text-align: center;">
+       
+       
+            <img src="src/assets/oui.png" alt="oui" class="oui">
+            <br>  <br>
+        </div>
+
     </section>
     <section id="section2" class="full-screen-section">
         <h1> Wallet Checker</h1>
-        <Checker {tezos} {walletHandler}></Checker>
+        <br>  <br>
+        {#key walletHandler}
+            <Checker {tezos} {walletHandler}/>
+        {/key} 
+        
+
         <br>
     </section>
     <section id="section3" class="full-screen-section">
+        <br>
         <h1>Organizations We Support </h1>
         <div class="imagemanager">
             <div class="imagee">
@@ -123,3 +142,6 @@
 
     </section>
 </main>
+
+  
+

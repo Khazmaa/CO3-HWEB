@@ -65,11 +65,12 @@
     }
 </script>
 
-<div>
+<div style="text-align: center;">
     <p>Your wallet has emitted {co2_emit} grams of CO2.</p>
     <p>You can refund your impact by buying some CO3 that will be used to support so environmental organization.</p>
     <p> How much do you want to refund ?</p>
-    <button on:click={() => buy_CO3(co2_emit * cost_grams).then()}>100%</button>
-    <button on:click={() => buy_CO3((co2_emit + co2_emit * 0.5) * cost_grams)}>150%</button>
-    <button on:click={() => buy_CO3(co2_emit * 2 * cost_grams)}>200%</button>
+    <button class="custom-button" on:click={() => buy_CO3(co2_emit * cost_grams).then()}>100%</button>
+<button class="custom-button" on:click={() => buy_CO3((co2_emit + co2_emit * 0.5) * cost_grams)}>150%</button>
+<button class="custom-button" on:click={() => buy_CO3(co2_emit * 2 * cost_grams)}>200%</button>
+
 </div>

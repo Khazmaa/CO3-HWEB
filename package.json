@@ -26,6 +26,7 @@
     "@taquito/tzip12": "^19.1.0",
     "@taquito/tzip16": "^19.1.0",
     "@taquito/utils": "^19.1.0",
-    "axios": "^1.6.8"
+    "axios": "^1.6.8",
+    "svelte-routing": "^2.12.0"
   }
 }

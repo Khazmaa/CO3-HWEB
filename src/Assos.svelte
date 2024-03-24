@@ -119,8 +119,6 @@
             <p>{description}</p>
         </div>
         <input type="text" placeholder="Amount" bind:value={amount}>
-        <button on:click={() => donateCO3(amount)} disabled={!withdrawButtonActive}>
-            {withdrawButtonLabel}
-        </button>
+        <button class="custom-button" on:click={() => donateCO3(amount)} disabled={!withdrawButtonActive}>
     </div>
 </div>
