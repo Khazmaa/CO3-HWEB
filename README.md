@@ -1,11 +1,11 @@
-# Tutorial application: Create your first application
+# CO3:
 
-This is the completed application from the tutorial [Build your first app on Tezos](https://docs.tezos.com/tutorials/build-your-first-app/).
-
-Follow these steps to run it:
-
-1. Install a Tezos wallet.
-1. Clone this repository.
-1. Run `npm install` to install the application's dependencies.
-1. Run `npm run dev` to start the application.
-1. Open a web browser to http://localhost:4000 to see the running application.
+# Stack:
+- For our website we use the library taquito that allow us to interact with tezos blockchain in combination with Svelte to handle the frontend management.
+- Our SoulBondToken contract (can be found inside contract folder) was develop using smartpy and its fa2 library.
+# How to run it:
+    Install a Tezos wallet.
+    Clone this repository.
+    Run `npm install` to install the application's dependencies.
+    Run `npm run dev` to start the application.
+    Open a web browser to http://localhost:4000 to see the running application.
