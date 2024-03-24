@@ -141,3 +141,8 @@ main {
     background-color: #f4a261;
 }
 
+.oui {
+ 
+    width: 400px; /* Largeur désirée */
+    height: 200px; /* Hauteur désirée */
+  }

@@ -88,7 +88,7 @@
             <p>{description}</p>
         </div>
         <input type="text" placeholder="Amount">
-        <button on:click={() => { console.log("NEED TO IMPLEMENT WITHDRAW"); alert(); }}
+        <button class="custom-button" on:click={() => { console.log("NEED TO IMPLEMENT WITHDRAW"); alert(); }}
                 disabled={!withdrawButtonActive}>
             {withdrawButtonLabel}
         </button>
