@@ -1,4 +1,6 @@
 # CO3 / PMU Labs:
+- Our work during the H-W3B 2024 Hackaton. CO3 is a tool designed to neutralize the carbon impact of a web3 user.
+- Currently its only working on Tezos.
 ## Presentation:
 - https://www.canva.com/design/DAGAXdvr1hc/yk4wYX09b-V27CuNGjo-7Q/edit?utm_content=DAGAXdvr1hc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ## Stack:
